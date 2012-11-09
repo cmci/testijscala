@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- >
+This pom.xml is for building Scala code that uses ImageJ. 
+<-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>1.19</version>
+	</parent>
+	
+	<groupId>de.embl.cmci</groupId>
+	<artifactId>testscala_Compile</artifactId>
+	<name>test_ijscala</name>
+	<description></description>
+		
+	<!--> repos: ImageJ release + scala tools <-->	
+	<repositories>
+		<repository>
+			<id>imagej.releases</id>
+			<url>http://maven.imagej.net/content/repositories/releases</url>
+		</repository>    
+		<repository>
+			<id>scala-tools.org</id>
+			<name>Scala-tools Maven2 Repository</name>
+<!--			<url>http://scala-tools.org/repo-releases</url> -->
+			<url>http://oss.sonatype.org/content/groups/scala-tools</url>
+		</repository>
+	</repositories>
+	<!--> plugin repo: Maven - Scala <-->	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>scala-tools.org</id>
+			<name>Scala-tools Maven2 Repository</name>
+<!--			<url>http://scala-tools.org/repo-releases</url> -->
+			<url>http://oss.sonatype.org/content/groups/scala-tools</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>ij</artifactId>
+			<version>${imagej1.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.9.2</version>
+		</dependency>	
+	</dependencies>	
+	
+	<!--> build environment<-->	
+	<build>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<testSourceDirectory>src/test/scala</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.scala-tools</groupId>
+				<artifactId>maven-scala-plugin</artifactId>
+				<version>2.15.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+<!--			to set the exact version
+				<configuration>
+					<scalaVersion>${scala.version}</scalaVersion>
+				</configuration>
+-->
+			</plugin>			
+		</plugins>
+	</build>
+</project>
